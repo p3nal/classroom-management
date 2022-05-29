@@ -1,0 +1,5 @@
+{% extends './base.html' %}
+{% block content %}
+<h2 class="text-center mb-3">{{ class_name }} Booked Successfully!</h2>
+<div><a href="{% url 'classroomgmt:index' %}" class="btn btn-primary btn-sm">BACK</a></div>
+{% endblock %}

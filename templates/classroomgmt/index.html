@@ -1,0 +1,21 @@
+{% extends './base.html' %}
+{% block content %}
+<h2 class="text-center mb-3">Available classes</h2>
+{% if class_list %}
+	{% for class in class_list%}
+    <div class="card mb-3">
+      <div class="card-body">
+        <span class="lead">
+          {{ class.name }}
+        </span>
+        <span class="lead">
+          {{ class.capacity }}
+        </span>
+        <a href="{% url 'classroomgmt:book' class.id %}" class="btn btn-primary btn-sm">BOOK</a>
+      </div>
+    </div>
+	{% endfor%}
+{% else %}
+	<p>No classes</p>
+{% endif %}
+{% endblock %}
