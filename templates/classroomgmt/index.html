@@ -1,27 +1,58 @@
 {% extends 'base.html' %}
 {% block content %}
 <h2 class="text-center mb-3">Available classes</h2>
-<div class="card mb-3">
-  <div class="card-body"> 
-    <div class="row">
-      <div class="col-sm-7">
-        Class name
-      </div>
-      <div class="col-sm-3">
-        Capacity
-      </div>
-      <div class="col-sm-2">
-        Book
+
+{% if class_list %}
+  <script>
+  function myFunction() {
+    // Declare variables
+    var input, filter, cardsList, li, a, i, txtValue;
+    input = document.getElementById('myInput');
+    filter = input.value.toUpperCase();
+    cardsList = document.getElementById("myUL");
+    li = cardsList.getElementsByClassName('myClassName');
+
+    // Loop through all list items, and hide those who don't match the search query
+    for (i = 0; i < li.length; i++) {
+      a = cardsList.getElementsByClassName("card")[i];
+      txtValue = a.getElementsByClassName("myClassName")[0].textContent || a.getElementsByClassName("myClassName")[0].innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        a.style.display = "";
+      } else {
+        a.style.display = "none";
+      }
+    }
+  }
+  </script>
+
+  <div class="card mb-3">
+    <!-- <div class="card-body"> --> 
+      <input class="card-text" type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for Classes...">
+    <!-- </div> -->
+  </div>
+
+  <div class="card mb-3">
+    <div class="card-body"> 
+      <div class="row">
+        <div class="col-sm-7">
+          Class name
+        </div>
+        <div class="col-sm-3">
+          Capacity
+        </div>
+        <div class="col-sm-2">
+          Book
+        </div>
       </div>
     </div>
   </div>
-</div>
-{% if class_list %}
+
+  <div id="myUL">
 	{% for class in class_list%}
     <div class="card mb-3">
       <div class="card-body"> 
         <div class="row">
-        <span class="lead col-sm-7">
+        <span class="lead col-sm-7 myClassName">
           {{ class.name }}
         </span>
         <span class="lead col-sm-3">
@@ -34,6 +65,7 @@
       </div>
     </div>
 	{% endfor%}
+    </div>
 {% else %}
 	<p>No classes</p>
 {% endif %}

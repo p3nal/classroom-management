@@ -69,6 +69,9 @@ TEMPLATES = [
     },
 ]
 
+MEDIA_ROOT = 'template/media'
+MEDIA_URL = '/media/'
+
 WSGI_APPLICATION = 'djangopfa.wsgi.application'
 
 
