@@ -21,7 +21,7 @@
         </a>
       </div>
       <div>
-        <ul class="navbar-nav">
+        <div class="navbar-nav">
           {% if request.user.is_authenticated %}
           <div class="navbar-header">
               <a class="nav-link" href="{% url 'logout' %}" style="color:white">Logout</a>
@@ -31,7 +31,7 @@
               <a class="nav-link" href="{% url 'login' %}" style="color:white">Login</a>
           </div>
           {% endif %}
-        </ul>
+        </div>
       </div>
     </div>
   </nav>
