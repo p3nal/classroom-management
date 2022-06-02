@@ -1,2 +1,2 @@
-# Class Management for Clubs
-This is a project intended for use inside my university to manage classes for the clubs that need them.
+# Classroom Management for Clubs
+This is a project intended for use inside my university to manage the distibution of classrooms among clubs when they need them for their activities, clubs managers can book classrooms for later use from the website without having confusion occur between which ones are free/taken etc...
