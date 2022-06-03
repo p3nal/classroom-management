@@ -1,6 +1,5 @@
 # probably not a good idea
 # .gitignore
-djangopfa/settings.py
 # Created by https://www.toptal.com/developers/gitignore/api/django,vim
 # Edit at https://www.toptal.com/developers/gitignore?templates=django,vim
 
