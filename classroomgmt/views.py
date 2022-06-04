@@ -42,3 +42,7 @@ def book(request, class_id):
 def logout_view(request):
     logout(request)
     return redirect(reverse_lazy('classroomgmt:index'))
+
+
+
+#done i guess

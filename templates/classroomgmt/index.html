@@ -13,7 +13,7 @@
     cardsList = document.getElementById("myUL");
     li = cardsList.getElementsByClassName('myClassName');
 
-    // Loop through all list items, and hide those who don't match the search query
+    // Loop through all list items, and hide those that don't match the search query
     for (i = 0; i < li.length; i++) {
       a = cardsList.getElementsByClassName("card")[i];
       txtValue = a.getElementsByClassName("myClassName")[0].textContent || a.getElementsByClassName("myClassName")[0].innerText;
