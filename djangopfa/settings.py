@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-2458e(azskbmx5y-wvywn+z4ug3p7ijsweuufx^&zg_!ksy=d%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -69,8 +69,6 @@ TEMPLATES = [
     },
 ]
 
-MEDIA_ROOT = 'template/media'
-MEDIA_URL = '/media/'
 
 WSGI_APPLICATION = 'djangopfa.wsgi.application'
 

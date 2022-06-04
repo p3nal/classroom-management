@@ -18,6 +18,6 @@ class ClassAdmin(admin.ModelAdmin):
 
 # Register your models here.
 admin.site.register(Club)
-# admin.site.register(Reservation)
+admin.site.register(Reservation)
 admin.site.register(Clas, ClassAdmin)
 
