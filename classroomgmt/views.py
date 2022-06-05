@@ -9,6 +9,8 @@ from django.shortcuts import redirect
 from django.urls import reverse_lazy
 
 # get salles and display the unreserved ones
+
+
 def index(request):
     claslis = Clas.objects.all()
     class_list = []
@@ -36,7 +38,7 @@ def book(request, class_id):
     # if the user keeps asking for booking even tho he exceeded limit
     # limit how many classes can one user book
     numOfReservations = len(Reservation.objects.all().filter(club=club))
-    if numOfReservations>2:
+    if numOfReservations > 3:
         return render(request, 'classroomgmt/limitexceeded.html', {})
 
     context = {
@@ -46,12 +48,22 @@ def book(request, class_id):
     clas.save()
     reservation.save()
 
-    return render(request, 'classroomgmt/booked.html', context) 
+    return render(request, 'classroomgmt/booked.html', context)
+
 
 def logout_view(request):
     logout(request)
     return redirect(reverse_lazy('classroomgmt:index'))
 
 
-
-#done i guess
+@login_required(login_url='/login/')
+def myreservations(request):
+    # make this into a function
+    if request.user.is_staff:
+        return render(request, 'classroomgmt/accountcantbook.html', {})
+    club = request.user.club
+    res_list = Reservation.objects.all().filter(club=club)
+    context = {
+        'reservation_list': [i.clas for i in res_list],
+    }
+    return render(request, 'classroomgmt/reservations.html', context)

@@ -29,6 +29,7 @@
               <a class="nav-item nav-link" style="color:white" href="{% url 'logout' %}">Logout</a>
             {% else %}
               <a style="color:white" class="nav-item nav-link" href="#">{{ user.club.name }} </a>
+              <a class="nav-item nav-link" style="color:white" href="{% url 'classroomgmt:myreservations' %}">My Reservatoins</a>
               <a class="nav-item nav-link" style="color:white" href="{% url 'logout' %}">Logout</a>
             {% endif %}
           {% else %}

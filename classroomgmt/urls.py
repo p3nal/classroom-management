@@ -7,5 +7,6 @@ urlpatterns = [
         path('', views.index, name='index'),
         path('<int:class_id>/', views.book, name='book'),
         path('logout/', views.logout_view, name='logout'),
+        path('myreservations/', views.myreservations, name='myreservations'),
         # TODO
 ]
