@@ -24,12 +24,18 @@ def book(request, class_id):
     # if staff dont let it pass.. staff shouldnt be reserving from here they
     # have no club lol
     if user.is_staff:
-        return render(request, 'classroomgmt/failedtobook.html', {})
+        return render(request, 'classroomgmt/accountcantbook.html', {})
     try:
         clas = Clas.objects.get(pk=class_id)
         club = user.club
     except Clas.DoesNotExist:
-        raise Http404('Class does not exist')
+        return render(request, 'classroomgmt/failedtobook.html', {})
+
+    # limit how many classes can one user book
+    numOfReservations = len(Reservation.objects.all().filter(club=club))
+    if numOfReservations>2:
+        return render(request, 'classroomgmt/limitexceeded.html', {})
+
     context = {
         'class_name': clas.name,
     }
