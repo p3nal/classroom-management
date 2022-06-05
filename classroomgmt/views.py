@@ -18,6 +18,7 @@ def index(request):
     context = {'class_list': class_list}
     return render(request, 'classroomgmt/index.html', context)
 
+
 @login_required(login_url='/login/')
 def book(request, class_id):
     user = request.user
@@ -31,6 +32,8 @@ def book(request, class_id):
     except Clas.DoesNotExist:
         return render(request, 'classroomgmt/failedtobook.html', {})
 
+    # add static variable here or something so we dont keep making calls to db
+    # if the user keeps asking for booking even tho he exceeded limit
     # limit how many classes can one user book
     numOfReservations = len(Reservation.objects.all().filter(club=club))
     if numOfReservations>2:

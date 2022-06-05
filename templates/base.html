@@ -11,33 +11,36 @@
   <title>Classroom Management for Clubs</title>
 </head>
 
-<body class="override">
-  <nav class="navbar bg-dark sticky-top">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="/" style="color:white">
-            <!-- yeah free image outsourcing yall.. -->
-          <img src="https://cdn.discordapp.com/attachments/909510051981590573/917092102393954324/ensias.png" alt="" width="39" height="32" class="d-inline-block align-text-top">
+<body>
+  <header class='site-header'>
+    <nav class="navbar navbar-expand-md bg-dark sticky-top">
+      <div class="container">
+        <a class="navbar-brand mr-auto" href="/" style="color:white">
+          <!-- yeah free image outsourcing yall.. -->
+          <img src="https://cdn.discordapp.com/attachments/909510051981590573/917092102393954324/ensias.png" alt=""
+          width="39" height="32" class="d-inline-block align-text-top">
           Classroom Management for Clubs
         </a>
-      </div>
-      <div>
+
         <div class="navbar-nav">
-          {% if request.user.is_authenticated %}
-          <div class="navbar-header">
-              <a class="nav-link" href="{% url 'logout' %}" style="color:white">Logout</a>
-          </div>
+          {% if user.is_authenticated %}
+            {% if user.is_staff %}
+              <a style="color:white" class="nav-item nav-link" href="#">{{ user.username.title }} </a>
+              <a class="nav-item nav-link" style="color:white" href="{% url 'logout' %}">Logout</a>
+            {% else %}
+              <a style="color:white" class="nav-item nav-link" href="#">{{ user.club.name }} </a>
+              <a class="nav-item nav-link" style="color:white" href="{% url 'logout' %}">Logout</a>
+            {% endif %}
           {% else %}
-          <div class="navbar-header">
-              <a class="nav-link" href="{% url 'login' %}" style="color:white">Login</a>
-          </div>
+            <a style="color:white" class="nav-item nav-link" href="{% url 'login' %}">Login</a>
           {% endif %}
         </div>
       </div>
-    </div>
-  </nav>
+
+    </nav>
+  </header>
   <section class="container">
-      <br/>
+    <br />
     <div class="row">
       <div class="col-md-6 m-auto">
         {% block content %}{% endblock %}
