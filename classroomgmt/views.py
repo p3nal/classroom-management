@@ -67,3 +67,9 @@ def myreservations(request):
         'reservation_list': [i.clas for i in res_list],
     }
     return render(request, 'classroomgmt/reservations.html', context)
+
+@login_required(login_url='/login/')
+def unbook(request, class_id):
+    clas = Clas.objects.get(pk=class_id)
+    clas.reservation.delete()
+    return redirect(reverse_lazy('classroomgmt:myreservations'))
