@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 class="text-center mb-3">My Reserved classes</h2>
+
+{% if reservation_list %}
+<div class="card mb-3">
+  <div class="card-body">
+    <div class="row">
+      <div class="col-sm-7">
+        Class name
+      </div>
+      <div class="col-sm-3">
+        Capacity
+      </div>
+      <div class="col-sm-2">
+        Free
+      </div>
+    </div>
+  </div>
+</div>
+
+<div>
+  {% for class in reservation_list%}
+  <div class="card mb-3">
+    <div class="card-body">
+      <div class="row">
+        <span class="lead col-sm-7">
+          {{ class.name }}
+        </span>
+        <span class="lead col-sm-3">
+          {{ class.capacity }}
+        </span>
+        <span class="col-sm-2">
+        <a href="{% url 'classroomgmt:unbook' class.id %}" class="btn btn-primary float-right">FREE</a>
+        </span>
+      </div>
+    </div>
+  </div>
+  {% endfor%}
+</div>
+<div><a href="{% url 'classroomgmt:index' %}" class="btn btn-primary btn-sm">BACK</a></div>
+{% else %}
+<p>No reservations yet</p>
+<div><a href="{% url 'classroomgmt:index' %}" class="btn btn-primary btn-sm">BACK</a></div>
+{% endif %}
+{% endblock %}

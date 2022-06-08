@@ -68,6 +68,7 @@ def myreservations(request):
     }
     return render(request, 'classroomgmt/reservations.html', context)
 
+
 @login_required(login_url='/login/')
 def unbook(request, class_id):
     clas = Clas.objects.get(pk=class_id)
