@@ -1,0 +1,5 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 class="text-center mb-3">The limit of booking is 4 classes, can't book any more.</h2>
+<div><a href="{% url 'classroomgmt:index' %}" class="btn btn-primary btn-sm">BACK</a></div>
+{% endblock %}
